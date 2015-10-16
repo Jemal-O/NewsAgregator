@@ -1,11 +1,10 @@
 <html>
 <head>
-<title>AJAX in java web application using jQuery</title>
+<title>Servlet in java web application</title>
 </head>
 <body>
-<form action="NewsSelector">
-<input type="submit">
- </form>
- <div id="ajaxResponse"></div>
+	<form action="NewsSelector">
+		<input type="submit">
+	</form>
 </body>
 </html>

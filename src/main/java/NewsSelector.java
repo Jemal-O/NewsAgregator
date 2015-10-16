@@ -1,6 +1,9 @@
 
-
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -12,43 +15,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class NewsSelector extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public NewsSelector() {
-        super();
-    }
-    
-//    String xml = "<user>" +
-//
-//                        "<name>Pavel</name>" +
-//
-//                        "<sername>Samolisov</sername>" +
-//
-//                        "<age>23</age>" +
-//
-//                        "<rating>89.93</rating>" +
-//
-//                     "</user>";
+	public NewsSelector() {
+		super();
+	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
 
+		JSONArray storage = getNews(path);
+		response.getWriter().append(storage.getJSONObject(0).toString());
+	}
 
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		URL url = new URL("http://androiddocs.ru/api/friends.json");
-        StringBuilder sb = new StringBuilder();
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-        	response.getWriter().append(inputLine);
-        }
-        in.close();
-
+	public static JSONArray getNews(String path) throws IOException {
+		File json = new File(path);
+		String jsonData = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(json)));
+		String line;
+		while ((line = reader.readLine()) != null) {
+			jsonData += line + "\n";
+		}
+		reader.close();
+		JSONArray array = new JSONArray(jsonData);
+		return array;
 	}
 
 }

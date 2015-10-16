@@ -1,0 +1,22 @@
+[{
+    category: "production",
+    title: "Russian Post app hits 1 million downloads",
+    description: "Administrative proceedings due to postage delay, delivering trouble instead of parcels — there have been some lowlights in Russian Post’s history. Its management has decided to make a radical change to the service’s reputation with a bet on IT. EPAM developed a Russian-language Android app for the Russian Post, which has already hit 1 million downloads. The app enables users to track their postal items easily.",
+    images: ["http://info.epam.com/content/dam/infoepam/editorial/photo/2015/russian_post_main.jpg"],
+    publishedDate: "08.10.2015 15:31:00",
+    priority: 1,
+    fullVersionLink: "http://info.epam.com/en/news/production/2015/russian_post_android_app.htmlRussian_Post_app_hits_1_million_downloads",
+    source: "info.epam.com"
+},
+
+{
+    category: "production",
+    title: "Russian Post app hits 1 million downloads",
+    description: "Administrative proceedings due to postage delay, delivering trouble instead of parcels — there have been some lowlights in Russian Post’s history. Its management has decided to make a radical change to the service’s reputation with a bet on IT. EPAM developed a Russian-language Android app for the Russian Post, which has already hit 1 million downloads. The app enables users to track their postal items easily.",
+    images: ["http://info.epam.com/content/dam/infoepam/editorial/photo/2015/russian_post_main.jpg"],
+    publishedDate: "08.10.2015 15:31:00",
+    priority: 1,
+    fullVersionLink: "http://info.epam.com/en/news/production/2015/russian_post_android_app.htmlRussian_Post_app_hits_1_million_downloads",
+    source: "info.epam.com"
+}
+]
