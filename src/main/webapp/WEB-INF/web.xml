@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>NewsSelector</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>New</servlet-name>
+  	<display-name>New</display-name>
+  	<description></description>
+  	<servlet-class>New</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SelectionNews</servlet-name>
   	<url-pattern>/SelectionNews</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>NewsSelector</servlet-name>
   	<url-pattern>/NewsSelector</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>New</servlet-name>
+  	<url-pattern>/New</url-pattern>
   </servlet-mapping>
 </web-app>
