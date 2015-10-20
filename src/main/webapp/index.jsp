@@ -1,19 +1,12 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
-<head>
-<title>News</title>
-<script src="jquery/jquery-1.11.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="jquery/ajax.js"></script>
-</head>
-<body>
-<form>
-  <fieldset>
-    <br /> Enter number: <input type="text" id="newsNumber" />
- </fieldset>
-
- <fieldset>
-   <legend>Response </legend>
-   <div id="ajaxResponse"></div>
- </fieldset>
-</form>
-</body>
+	<head>
+		<title>Servlet in java web application</title>
+		</meta>
+	</head>
+	<body>
+		<form action="NewsSelector">
+			<input type="submit" value="Получить новости">
+		</form>
+	</body>
 </html>
