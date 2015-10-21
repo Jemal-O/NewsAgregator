@@ -18,27 +18,44 @@ import org.json.JSONObject;
 import org.json.XML;
 
 public class NewsSelector extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	int i;
 	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
-
-	public NewsSelector() {
-		super();
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ServletContext context = request.getServletContext();
+		Object countObject = checkContext(context);
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-
-		JSONArray storage = getNews(path);
-		ServletContext sc = this.getServletContext();
-		sc.setAttribute("count", 0);
-		int n = (Integer) sc.getAttribute("count");
-		response.setContentType("text/html");
-		response.getWriter().append(storage.getJSONObject(i++).toString(PRETTY_PRINT_INDENT_FACTOR));
+		String xmlData = getdataReader(path);
+		JSONObject jsonData = getxmltoJsonObject(xmlData);
+		JSONArray storage = getNews(jsonData);
+		int count = (Integer) context.getAttribute("count");
+		response.getWriter().append(storage.getJSONObject(count++).toString(PRETTY_PRINT_INDENT_FACTOR));
+		context.setAttribute("count", count);
 	}
 
-	public static JSONArray getNews(String path) throws IOException {
+	public Object checkContext(ServletContext context) {
+		if (context.getAttribute("count") == null) {
+			context.setAttribute("count", 0);
+			return context.getAttribute("count");
+		} else {
+			return context.getAttribute("count");
+		}
+
+	}
+
+	public static JSONArray getNews(JSONObject xmlJSONObj) throws IOException {
+		String convertJSONtoStr = xmlJSONObj.toString();
+		String pruning = convertJSONtoStr.substring(convertJSONtoStr.indexOf('['), convertJSONtoStr.indexOf(']') + 1);
+		JSONArray newsStorage = new JSONArray(pruning);
+		return newsStorage;
+	}
+
+	private static JSONObject getxmltoJsonObject(String xmlData) {
+		JSONObject xmlJSONObj = XML.toJSONObject(xmlData);
+		return xmlJSONObj;
+	}
+
+	private static String getdataReader(String path) throws IOException {
 		File xmlFile = new File(path);
 		String xmlData = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(xmlFile)));
@@ -47,12 +64,7 @@ public class NewsSelector extends HttpServlet {
 			xmlData += line;
 		}
 		reader.close();
-
-		JSONObject xmlJSONObj = XML.toJSONObject(xmlData);
-		String convertJSONtoStr = xmlJSONObj.toString();
-		String pruning = convertJSONtoStr.substring(convertJSONtoStr.indexOf('['), convertJSONtoStr.indexOf(']') + 1);
-		JSONArray newsStorage = new JSONArray(pruning);
-		return newsStorage;
+		return xmlData;
 	}
 
 }
