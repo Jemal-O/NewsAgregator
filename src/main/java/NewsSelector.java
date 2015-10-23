@@ -23,17 +23,27 @@ public class NewsSelector extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ServletContext context = request.getServletContext();
-		Object countObject = checkContext(context);
-		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-		String xmlData = getdataReader(path);
-		JSONObject jsonData = getxmltoJsonObject(xmlData);
-		JSONArray storage = getNews(jsonData);
-		int count = (Integer) context.getAttribute("count");
+		int count = getPresentNum(context);
+		JSONArray storage = initVar(request);
 		response.getWriter().append(storage.getJSONObject(count++).toString(PRETTY_PRINT_INDENT_FACTOR));
 		context.setAttribute("count", count);
 	}
 
-	public Object checkContext(ServletContext context) {
+	private int getPresentNum(ServletContext context) {
+		Object countObject = checkContextContent(context);
+		int count = (Integer) context.getAttribute("count");
+		return count;
+	}
+
+	private JSONArray initVar(HttpServletRequest request) throws IOException {
+		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
+		String xmlData = getdataReader(path);
+		JSONObject jsonData = getxmltoJsonObject(xmlData);
+		JSONArray storage = getNews(jsonData);
+		return storage;
+	}
+
+	private Object checkContextContent(ServletContext context) {
 		if (context.getAttribute("count") == null) {
 			context.setAttribute("count", 0);
 			return context.getAttribute("count");
