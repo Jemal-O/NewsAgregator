@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>NewsSelector</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ContServlet</servlet-name>
+  	<display-name>ContServlet</display-name>
+  	<description></description>
+  	<servlet-class>ContServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>NewsSelector</servlet-name>
   	<url-pattern>/NewsSelector</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContServlet</servlet-name>
+  	<url-pattern>/ContServlet</url-pattern>
   </servlet-mapping>
 </web-app>
