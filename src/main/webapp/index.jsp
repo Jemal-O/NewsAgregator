@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<title>Servlet in java web application</title>
+		<title>Epam News</title>
 		</meta>
 	</head>
 	<body>
