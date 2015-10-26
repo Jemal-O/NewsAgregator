@@ -5,23 +5,23 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>SelectionNews</servlet-name>
-  	<display-name>SelectionNews</display-name>
-  	<description></description>
-  	<servlet-class>SelectionNews</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>NewsSelector</servlet-name>
   	<display-name>NewsSelector</display-name>
   	<description></description>
   	<servlet-class>NewsSelector</servlet-class>
   </servlet>
-  <servlet-mapping>
-  	<servlet-name>SelectionNews</servlet-name>
-  	<url-pattern>/SelectionNews</url-pattern>
-  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ContServlet</servlet-name>
+  	<display-name>ContServlet</display-name>
+  	<description></description>
+  	<servlet-class>ContServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>NewsSelector</servlet-name>
   	<url-pattern>/NewsSelector</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContServlet</servlet-name>
+  	<url-pattern>/ContServlet</url-pattern>
   </servlet-mapping>
 </web-app>
