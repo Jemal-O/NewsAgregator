@@ -37,7 +37,7 @@
 	<FORM action="folderAddition.jsp" method="POST">
 
 		<input type="text" name="folder" /> <input type="submit"
-			value="start upload" />
+			value="Add path" />
 
 	</FORM>
 

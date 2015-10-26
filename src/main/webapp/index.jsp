@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Servlet in java web application</title>
+<title>Epam News</title>
 </meta>
 </head>
 <body>
@@ -9,13 +9,13 @@
 		<h1>Hello! select the desired item</h1>
 	</center>
 	<form action="NewsSelector">
-		<input type="submit" value="Получить новости">
+		<input type="submit" value="Receive news">
 	</form>
 	<form action="ContServlet" method="POST">
 		<b> Write folder path:</b>
 		<br>
 		<input type="text" name="folder" /> 
-		<input type="submit" value="Добавить свои новости">
+		<input type="submit" value="Add path">
 	</form>
 </body>
 </html>
