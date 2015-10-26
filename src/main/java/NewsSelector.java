@@ -22,12 +22,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class NewsSelector extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	public NewsSelector() {
-		super();
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
