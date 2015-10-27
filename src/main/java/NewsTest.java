@@ -22,15 +22,15 @@ public class NewsTest {
 
 	@Test
 	public void test() throws IOException {
-		String xmlData = "";
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\json.txt")));
-		String line;
-		while ((line = reader.readLine()) != null) {
-			xmlData += line;
-		}
-		reader.close();
-		JSONObject xmlJSONObj=news.getxmltoJsonObject(xmlData);
-		JSONArray ja= news.getNews(xmlJSONObj);
+//		String xmlData = "";
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\json.txt")));
+//		String line;
+//		while ((line = reader.readLine()) != null) {
+//			xmlData += line;
+//		}
+//		reader.close();
+//		JSONObject xmlJSONObj=news.getxmltoJsonObject(xmlData);
+//		JSONArray ja= news.getNews(xmlJSONObj);
         Assert.assertTrue("1".toString().equals("1"));
 	}
 
