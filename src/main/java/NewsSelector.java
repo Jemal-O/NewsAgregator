@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import org.json.XML;
 
 public class NewsSelector extends HttpServlet {
-	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
+	public static int PRETTY_PRINT_INDENT_FACTOR = 2;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
