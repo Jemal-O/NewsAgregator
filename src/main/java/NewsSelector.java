@@ -60,7 +60,7 @@ public class NewsSelector extends HttpServlet {
 		return newsStorage;
 	}
 
-	private static JSONObject getxmltoJsonObject(String xmlData) {
+	public static JSONObject getxmltoJsonObject(String xmlData) {
 		JSONObject xmlJSONObj = XML.toJSONObject(xmlData);
 		return xmlJSONObj;
 	}
