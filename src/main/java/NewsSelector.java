@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 
+@WebServlet("/NewsSelector")
 public class NewsSelector extends HttpServlet {
 	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
 
