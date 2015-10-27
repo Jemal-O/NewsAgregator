@@ -13,7 +13,6 @@ public class NewsTest {
 
 	@Test
 	public void test(){
-
         Assert.assertTrue("1".toString().equals("1"));
 	}
 
