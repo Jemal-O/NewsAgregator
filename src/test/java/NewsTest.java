@@ -12,7 +12,8 @@ public class NewsTest {
 
 	@Test
 	public void test() {
-		Assert.assertTrue("1".equals("2"));
+		int formatting = NewsSelector.PRETTY_PRINT_INDENT_FACTOR;
+		Assert.assertTrue(formatting==1);
 	}
 
 }
