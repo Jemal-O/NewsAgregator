@@ -1,7 +1,9 @@
 
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
+import javax.servlet.annotation.WebListener;
 
+@WebListener
 public class LifeCycleListener1 implements ServletRequestListener {
 
 	public void requestDestroyed(ServletRequestEvent sre) {

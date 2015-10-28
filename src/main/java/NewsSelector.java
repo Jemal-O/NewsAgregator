@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
@@ -15,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-
 @WebServlet("/NewsSelector")
 public class NewsSelector extends HttpServlet {
 	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
@@ -60,7 +61,7 @@ public class NewsSelector extends HttpServlet {
 		return newsStorage;
 	}
 
-	private static JSONObject getxmltoJsonObject(String xmlData) {
+	public static JSONObject getxmltoJsonObject(String xmlData) {
 		JSONObject xmlJSONObj = XML.toJSONObject(xmlData);
 		return xmlJSONObj;
 	}

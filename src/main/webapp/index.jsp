@@ -17,5 +17,8 @@
 		<input type="text" name="folder" /> 
 		<input type="submit" value="Add path">
 	</form>
+	<form action="newsFilter.jsp">
+	<input type="submit" value="News Filter">
+	</form>
 </body>
 </html>
