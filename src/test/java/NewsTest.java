@@ -12,7 +12,7 @@ public class NewsTest {
 
 	@Test
 	public void test() {
-		Assert.assertTrue("1".equals("1"));
+		Assert.assertTrue("2".equals("2"));
 	}
 
 }
