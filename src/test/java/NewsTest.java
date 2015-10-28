@@ -13,7 +13,7 @@ public class NewsTest {
 	@Test
 	public void test() {
 		int formatting = NewsSelector.PRETTY_PRINT_INDENT_FACTOR;
-		Assert.assertTrue(formatting==1);
+		Assert.assertTrue(formatting==2);
 	}
 
 }
