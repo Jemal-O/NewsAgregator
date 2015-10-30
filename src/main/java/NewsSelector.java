@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+
 @WebServlet("/NewsSelector")
 public class NewsSelector extends HttpServlet {
-//	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

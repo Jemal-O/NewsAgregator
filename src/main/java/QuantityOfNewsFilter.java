@@ -33,12 +33,14 @@ public class QuantityOfNewsFilter implements Filter {
 		int count = getPresentNum(context);
 		PrintWriter appender = response.getWriter();
 		JSONArray obtainData = new JSONArray(iResponse.toString());
+		// For Example fieldName - author fieldDesc - Viktoryia Barodzich
+		//if fields aren't filled, all news will be displayed
 		
 		if ((fieldName.equals("") && fieldDesc.equals("")) || (fieldName.equals("") && fieldDesc.equals(""))
 				|| ((fieldName == null) && (fieldDesc.equals("")))) {
-			
+
 			appender.println(obtainData.getJSONObject(count++).toString());
-			
+
 		} else {
 			filterFields(obtainData, list, fieldName, fieldDesc);
 			appender.println(list.get(count++));
@@ -48,7 +50,6 @@ public class QuantityOfNewsFilter implements Filter {
 
 	private static void filterFields(JSONArray array, ArrayList list, String field, String value) {
 		for (int i = 0; i < array.length(); i++) {
-			// For Example Viktoryia Barodzich
 			if (array.getJSONObject(i).get(field).equals(value)) {
 				list.add(array.getJSONObject(i).toString());
 			}
