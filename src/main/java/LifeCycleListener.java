@@ -6,7 +6,7 @@ import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 
 @WebListener
-public class HttpSessionListener implements ServletRequestAttributeListener, ServletRequestListener {
+public class LifeCycleListener implements ServletRequestAttributeListener, ServletRequestListener {
 
 	public void requestDestroyed(ServletRequestEvent sre) {
 		System.out.println("The request " + sre.getServletRequest() + " has been sent");

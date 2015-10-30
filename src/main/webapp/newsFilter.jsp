@@ -2,18 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 <form action="NewsSelector">
-<b>Quantity of news: </b>
-<input type="text" name="quantity">
-<input type="submit" value="Add number">
+<b>Write field name: </b>
+<input type="text" name="fieldName"/>
 <br>
 <br>
-<b>Select Author:</b>
-<input type="text" name="author">
-</form>
+<b>Write Value:</b>
+<input type="text" name="fieldDesc"/>
+<input type="submit"/>
 </body>
 </html>

@@ -19,14 +19,14 @@ import org.json.JSONObject;
 import org.json.XML;
 @WebServlet("/NewsSelector")
 public class NewsSelector extends HttpServlet {
-	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
+//	public static int PRETTY_PRINT_INDENT_FACTOR = 1;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ServletContext context = request.getServletContext();
 		int count = getPresentNum(context);
 		JSONArray storage = initVar(request);
-		response.getWriter().append(storage.getJSONObject(count++).toString(PRETTY_PRINT_INDENT_FACTOR));
+		response.getWriter().append(storage.toString());
 		context.setAttribute("count", count);
 	}
 
