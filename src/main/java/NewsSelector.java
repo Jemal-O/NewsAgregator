@@ -17,65 +17,42 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @WebServlet("/NewsSelector")
 public class NewsSelector extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		XMLParser xParser = (XMLParser) ctx.getBean("xmlParser");
+		AttributeStorage attribStorage = (AttributeStorage) ctx.getBean("attributeStorage");
+		DataReader dReader = (DataReader) ctx.getBean("dataReader");
+		
 		ServletContext context = request.getServletContext();
-		int count = getPresentNum(context);
-		JSONArray storage = initVar(request);
+		int count = attribStorage.getPresentNum(context);
+		
+		String xmlData = getData(request, dReader);
+		JSONArray storage = initVar(xmlData, xParser);
+		
 		response.getWriter().append(storage.toString());
 		context.setAttribute("count", count);
 	}
+	
+	
 
-	private int getPresentNum(ServletContext context) {
-		Object countObject = checkContextContent(context);
-		int count = (Integer) context.getAttribute("count");
-		return count;
-	}
-
-	private JSONArray initVar(HttpServletRequest request) throws IOException {
+	private String getData(HttpServletRequest request, DataReader dReader) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-		String xmlData = getdataReader(path);
-		JSONObject jsonData = getxmltoJsonObject(xmlData);
-		JSONArray storage = getNews(jsonData);
-		return storage;
-	}
-
-	private Object checkContextContent(ServletContext context) {
-		if (context.getAttribute("count") == null) {
-			context.setAttribute("count", 0);
-			return context.getAttribute("count");
-		} else {
-			return context.getAttribute("count");
-		}
-
-	}
-
-	public static JSONArray getNews(JSONObject xmlJSONObj) throws IOException {
-		String convertJSONtoStr = xmlJSONObj.toString();
-		String pruning = convertJSONtoStr.substring(convertJSONtoStr.indexOf('['), convertJSONtoStr.indexOf(']') + 1);
-		JSONArray newsStorage = new JSONArray(pruning);
-		return newsStorage;
-	}
-
-	public static JSONObject getxmltoJsonObject(String xmlData) {
-		JSONObject xmlJSONObj = XML.toJSONObject(xmlData);
-		return xmlJSONObj;
-	}
-
-	private static String getdataReader(String path) throws IOException {
-		File xmlFile = new File(path);
-		String xmlData = "";
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(xmlFile)));
-		String line;
-		while ((line = reader.readLine()) != null) {
-			xmlData += line;
-		}
-		reader.close();
+		String xmlData = dReader.getdataReader(path);
 		return xmlData;
+	}
+
+	private JSONArray initVar(String xmlData, XMLParser xParser) throws IOException {
+		JSONObject jsonData = xParser.getxmltoJsonObject(xmlData);
+		JSONArray storage = xParser.getNews(jsonData);
+		return storage;
 	}
 
 }
