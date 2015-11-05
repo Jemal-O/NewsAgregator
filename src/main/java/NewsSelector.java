@@ -41,8 +41,6 @@ public class NewsSelector extends HttpServlet {
 		context.setAttribute("count", count);
 	}
 	
-	
-
 	private String getData(HttpServletRequest request, DataReader dReader) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
 		String xmlData = dReader.getdataReader(path);
