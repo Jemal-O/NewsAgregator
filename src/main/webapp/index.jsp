@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>Epam News</title>
-</meta>
 </head>
 <body>
 	<center>

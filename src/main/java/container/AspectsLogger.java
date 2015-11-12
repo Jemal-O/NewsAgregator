@@ -6,18 +6,18 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-//import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
 public class AspectsLogger {
 
-//	@Pointcut("execution(* *getdataReader(..)")
-//	private void readerLogger() {
-//	}
+	@Pointcut("execution(* *.getAllNews(..))")
+	private void readerLogger() {
+	}
 
-	@Before("execution(* *getdataReader(..))")
+	@Before("readerLogger()")
 	public void logBeforeReader(JoinPoint joinPoint) {
 		System.out.println("It began the process of reading a file");
 	}
@@ -27,19 +27,20 @@ public class AspectsLogger {
 		System.out.println("It began the process of adding Folder");
 	}
 	
-	@After("execution(* *getdataReader(..))")
-	public void logAfterReader(JoinPoint joinPoint) {
-		System.out.println("The reading process is successful");
+	@AfterReturning("execution(* *addAndViewFolders(..))")
+	public void logAfterReturningAddAndViewFolders(JoinPoint joinPoint) {
+		System.out.println("The folder is added");
 	}
 	
-	@AfterThrowing("execution(* *getdataReader(..))")
+	@After("readerLogger()")
+	public void logAfterReader(JoinPoint joinPoint) {
+		System.out.println("Formed and returned an object News");
+	}
+	
+	@AfterThrowing("readerLogger()")
 	public void logAfterReaderThrowing(JoinPoint joinPoint) {
 		System.out.println("Error reading from file");
 	}
 	
-	@AfterReturning("execution(* *getNewsStorage(..))")
-	public void logAfterReturningNewsObject(JoinPoint joinPoint) {
-		System.out.println("Formed and returned an object News");
-	}
 }
 
