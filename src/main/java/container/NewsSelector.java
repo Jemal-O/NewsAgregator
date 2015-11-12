@@ -1,6 +1,5 @@
 package container;
 
-
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +14,7 @@ public class NewsSelector {
 	private HttpServletRequest request;
 	private NewsKeeping newsKeeping;
 	private XMLParser xmlParser;
+
 	public NewsKeeping getNewsStorage() throws IOException {
 		String xmlData = getXMLData(request);
 		JSONObject jsonData = xmlParser.getxmltoJsonObject(xmlData);
@@ -36,10 +36,10 @@ public class NewsSelector {
 	public void setNewsKeeping(NewsKeeping newsKeeping) {
 		this.newsKeeping = newsKeeping;
 	}
-	
+
 	@Autowired
-	public void setXMLParser (XMLParser xmlParser) {
-		this.xmlParser=xmlParser;
+	public void setXMLParser(XMLParser xmlParser) {
+		this.xmlParser = xmlParser;
 	}
 
 	private String getXMLData(HttpServletRequest request) throws IOException {
