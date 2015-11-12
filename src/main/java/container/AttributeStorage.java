@@ -16,7 +16,6 @@ public class AttributeStorage {
 	}
 
 	int getPresentNum(ServletContext context) {
-		Object countObject = checkContextContent(context);
 		int count = (Integer) context.getAttribute("count");
 		return count;
 	}

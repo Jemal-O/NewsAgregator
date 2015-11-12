@@ -4,9 +4,8 @@
 <title>Epam News</title>
 </head>
 <body>
-	<center>
-		<h1>Hello! select the desired item</h1>
-	</center>
+	
+	<h1>Hello! select the desired item</h1>
 	<form action="/News/news">
 	 	If fields aren't filled, all news will be displayed
 			<br>

@@ -34,7 +34,7 @@
 
  <mvc:interceptors>
 	    <mvc:interceptor>
-	        <mvc:mapping path="news" />
+	        <mvc:mapping path="/news" />
 	        <bean class="container.ModelSubstitution" />
 	    </mvc:interceptor>
 	</mvc:interceptors>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NewsKeeping {
+	
 	private List<NewsObject> newsObj = new ArrayList<NewsObject>();
 
 	private XMLParser xmlParser;
@@ -26,7 +27,6 @@ public class NewsKeeping {
 	public NewsKeeping getNews(JSONObject xmlJSONObj) throws IOException {
 		JSONArray ja = xmlParser.getNewsStorage(xmlJSONObj);
 		NewsKeeping news = new NewsKeeping();
-		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < ja.length(); i++) {
 			NewsObject newsObj = new NewsObject();
 			newsObj.setAuthor(ja.getJSONObject(i).get("author").toString());

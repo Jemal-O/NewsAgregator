@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NewsSelector {
 	private HttpServletRequest request;
 	private NewsKeeping newsKeeping;
-
+	private XMLParser xmlParser;
 	public NewsKeeping getNewsStorage() throws IOException {
 		String xmlData = getXMLData(request);
-		JSONObject jsonData = XMLParser.getxmltoJsonObject(xmlData);
+		JSONObject jsonData = xmlParser.getxmltoJsonObject(xmlData);
 		return newsKeeping.getNews(jsonData);
 	}
 
@@ -35,6 +35,11 @@ public class NewsSelector {
 	@Autowired
 	public void setNewsKeeping(NewsKeeping newsKeeping) {
 		this.newsKeeping = newsKeeping;
+	}
+	
+	@Autowired
+	public void setXMLParser (XMLParser xmlParser) {
+		this.xmlParser=xmlParser;
 	}
 
 	private String getXMLData(HttpServletRequest request) throws IOException {
