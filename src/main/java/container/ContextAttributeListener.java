@@ -4,13 +4,13 @@ import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.annotation.WebListener;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @WebListener
 public class ContextAttributeListener implements ServletContextAttributeListener {
 	ServletLogger sLogger;
 
+	@Autowired
 	public ContextAttributeListener() {
 		sLogger = new ServletLogger();
 	}

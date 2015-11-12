@@ -6,13 +6,13 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @WebListener
 public class LifeCycleListener implements ServletRequestAttributeListener, ServletRequestListener {
 	ServletLogger sLogger;
 
+	@Autowired
 	public LifeCycleListener() {
 		sLogger = new ServletLogger();
 	}

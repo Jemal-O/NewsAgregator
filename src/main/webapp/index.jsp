@@ -19,7 +19,6 @@
 		<input type="submit" value="Receive news">
 			<br>
 		For Example fieldDesc - Viktoryia Barodzich
-		For Example fieldName - author
 	</form>
 	<form action="/News/addition">
 		<b>Please, enter the folder name </b>

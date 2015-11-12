@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DataReader {
 
 	public static String getdataReader(String path) throws IOException {

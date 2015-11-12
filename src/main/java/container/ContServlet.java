@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ContServlet extends javax.servlet.http.HttpServlet {
+public class ContServlet {
+
 	private ArrayList<String> storage = new ArrayList<String>();
 
 	@RequestMapping(value = "/addition")
-	public String doForwardToJsp(@RequestParam(value = "folder", required = false) String folder,
+	public String addAndViewFolders(@RequestParam(value = "folder", required = false) String folder,
 			HttpServletRequest request, HttpServletResponse response, Model model)
 					throws ServletException, IOException {
 

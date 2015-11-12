@@ -6,11 +6,14 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class NewsKeeping {
 	private List<NewsObject> newsObj = new ArrayList<NewsObject>();
+
+	private XMLParser xmlParser;
 
 	public List<NewsObject> getListforKeeping() {
 		return newsObj;
@@ -21,7 +24,7 @@ public class NewsKeeping {
 	}
 
 	public NewsKeeping getNews(JSONObject xmlJSONObj) throws IOException {
-		JSONArray ja = XMLParser.getNewsStorage(xmlJSONObj);
+		JSONArray ja = xmlParser.getNewsStorage(xmlJSONObj);
 		NewsKeeping news = new NewsKeeping();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < ja.length(); i++) {
@@ -37,4 +40,10 @@ public class NewsKeeping {
 		}
 		return news;
 	}
+
+	@Autowired
+	public void setXmlParser(XMLParser xmlParser) {
+		this.xmlParser = xmlParser;
+	}
+
 }
