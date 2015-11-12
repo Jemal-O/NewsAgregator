@@ -1,5 +1,9 @@
+package container;
 import javax.servlet.ServletContext;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AttributeStorage {
 
 	Object checkContextContent(ServletContext context) {

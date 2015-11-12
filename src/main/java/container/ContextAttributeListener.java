@@ -1,3 +1,4 @@
+package container;
 
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
@@ -11,8 +12,7 @@ public class ContextAttributeListener implements ServletContextAttributeListener
 	ServletLogger sLogger;
 
 	public ContextAttributeListener() {
-		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		sLogger = (ServletLogger) ctx.getBean("servletLogger");
+		sLogger = new ServletLogger();
 	}
 
 	public void attributeAdded(ServletContextAttributeEvent event) {

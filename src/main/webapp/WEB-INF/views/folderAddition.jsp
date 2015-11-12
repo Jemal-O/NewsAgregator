@@ -1,0 +1,19 @@
+<%@page import="java.util.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<html>
+<head>
+<title>Folders with images</title>
+</head>
+<body>
+	<h3>Previously added folders:</h3>
+	<h1>${name}</h1>
+	<h3>${nothing}</h3>
+	<h3>${storage}</h3>
+		<br>
+	<FORM action="/News/addition">
+		<input type="text" name="folder" /> 
+		<input type="submit" value="Add path" />
+	</FORM>
+
+</body>
+</html>
