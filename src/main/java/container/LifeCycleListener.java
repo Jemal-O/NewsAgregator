@@ -4,8 +4,9 @@ import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
+import javax.servlet.annotation.WebListener;
 import org.springframework.beans.factory.annotation.Autowired;
-
+@WebListener
 public class LifeCycleListener implements ServletRequestAttributeListener, ServletRequestListener {
 	ServletLogger sLogger;
 

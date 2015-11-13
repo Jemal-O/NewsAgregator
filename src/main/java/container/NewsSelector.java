@@ -1,58 +1,56 @@
 package container;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Enumeration;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.XML;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@WebServlet("/NewsSelector")
-public class NewsSelector extends HttpServlet {
+@Controller
+public class NewsSelector {
+	private HttpServletRequest request;
+	private NewsKeeping newsKeeping;
+	private XMLParser xmlParser;
+	private DataReader dataReader;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		XMLParser xParser = (XMLParser) ctx.getBean("xmlParser");
-		AttributeStorage attribStorage = (AttributeStorage) ctx.getBean("attributeStorage");
-		DataReader dReader = (DataReader) ctx.getBean("dataReader");
-
-		ServletContext context = request.getServletContext();
-		int count = attribStorage.getPresentNum(context);
-
-		String xmlData = getData(request, dReader);
-		JSONArray storage = initVar(xmlData, xParser);
-
-		response.getWriter().append(storage.toString());
-		context.setAttribute("count", count);
+	public NewsKeeping getNewsStorage() throws IOException {
+		String xmlData = getXMLData(request);
+		JSONObject jsonData = xmlParser.getxmltoJsonObject(xmlData);
+		return newsKeeping.getNews(jsonData);
 	}
 
-	private String getData(HttpServletRequest request, DataReader dReader) throws IOException {
+	@RequestMapping(value = "/news")
+	public String getAllNews(Model model) throws IOException {
+		model.addAttribute("news", getNewsStorage());
+		return "jsonTemplate";
+	}
+
+	@Autowired
+	public void setHttpServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	@Autowired
+	public void setNewsKeeping(NewsKeeping newsKeeping) {
+		this.newsKeeping = newsKeeping;
+	}
+
+	@Autowired
+	public void setXMLParser(XMLParser xmlParser) {
+		this.xmlParser = xmlParser;
+	}
+
+	@Autowired
+	public void setDataReader(DataReader dataReader) {
+		this.dataReader = dataReader;
+	}
+
+	private String getXMLData(HttpServletRequest request) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-		String xmlData = dReader.getdataReader(path);
+		String xmlData = dataReader.getDataReader(path);
 		return xmlData;
-	}
-
-	private JSONArray initVar(String xmlData, XMLParser xParser) throws IOException {
-		JSONObject jsonData = xParser.getxmltoJsonObject(xmlData);
-		JSONArray storage = xParser.getNews(jsonData);
-		return storage;
 	}
 
 }

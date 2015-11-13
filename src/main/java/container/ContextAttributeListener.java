@@ -2,8 +2,10 @@ package container;
 
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
+import javax.servlet.annotation.WebListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@WebListener
 public class ContextAttributeListener implements ServletContextAttributeListener {
 	ServletLogger sLogger;
 

@@ -72,5 +72,7 @@ public class NewsObject {
 		builder.append(pubDate + "]");
 		return builder.toString();
 	}
-
 }
+
+
+

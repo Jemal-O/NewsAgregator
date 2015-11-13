@@ -1,45 +1,25 @@
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Folders with images</title>
 </head>
 <body>
 	<h3>Previously added folders:</h3>
-	<%
-		ArrayList list = (ArrayList) request.getServletContext().getAttribute("storage");
-		if ((request.getParameter("folder").equals("null")) || (request.getParameter("folder").equals(""))) {
-	%>
-	<h1>Please enter the path</h1>
-	<%
-		} else {
-			list.add(request.getParameter("folder"));
-
-		}
-		if (list.isEmpty()) {
-	%>
-	<h5>nothing is added</h5>
-	<%
-		} else {
-			for (int i = 0; i < list.size(); i++) {
-	%>
-	<div id=<%=i%>>
-		<img
-			src=<%=request.getSession().getServletContext().getRealPath("/") + "images\\folder.jpg"%>
-			width="20px" height="20px"> <b>Folder path:</b>
-		<%=list.get(i)%>
-	</div>
-	<%
-		}
-		}
-	%>
-	<br>
-	<FORM action="folderAddition.jsp" method="POST">
-
-		<input type="text" name="folder" /> <input type="submit"
-			value="Add path" />
-
+	<h1>${name}</h1>
+	<h3>${nothing}</h3>
+	<h3>
+		<c:forEach var="item" items="${newsStorage}">
+			<img src=${path } width="20px" height="20px"/>
+			<c:out value="Folder path : " />
+			<c:out value="${item}" />
+			<br/>
+		</c:forEach>
+	</h3>
+	<br/>
+	<FORM action="/News/addition">
+		<input type="text" name="folder" /> <input type="submit" value="Add path" />
 	</FORM>
-
 </body>
 </html>

@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NewsKeeping {
-	
 	private List<NewsObject> newsObj = new ArrayList<NewsObject>();
-
 	private XMLParser xmlParser;
 
 	public List<NewsObject> getListforKeeping() {
@@ -44,5 +42,5 @@ public class NewsKeeping {
 	public void setXmlParser(XMLParser xmlParser) {
 		this.xmlParser = xmlParser;
 	}
-
 }
+
