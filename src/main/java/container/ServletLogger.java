@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServletLogger {
 
-	public void traceConsole(String arg0) {
-		System.out.println(arg0);
+	public void traceConsole(String log) {
+		System.out.println(log);
 	}
 
 }
