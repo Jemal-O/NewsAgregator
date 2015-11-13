@@ -17,7 +17,6 @@ public class ContServlet extends javax.servlet.http.HttpServlet {
 			throws ServletException, IOException {
 		ServletContext scontext = request.getServletContext();
 		scontext.setAttribute("storage", storage);
-
 		request.getRequestDispatcher("/folderAddition.jsp").forward(request, response);
 
 	}

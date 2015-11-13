@@ -14,7 +14,6 @@ public class ContextAttributeListener implements ServletContextAttributeListener
 
 	public void attributeAdded(ServletContextAttributeEvent event) {
 		sLogger.traceConsole("The attribute name: " + event.getName() + " is added to ServletContext");
-
 	}
 
 	public void attributeRemoved(ServletContextAttributeEvent event) {
