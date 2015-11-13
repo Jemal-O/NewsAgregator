@@ -1,3 +1,5 @@
+package container;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,22 +27,22 @@ public class NewsSelector extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 		XMLParser xParser = (XMLParser) ctx.getBean("xmlParser");
 		AttributeStorage attribStorage = (AttributeStorage) ctx.getBean("attributeStorage");
 		DataReader dReader = (DataReader) ctx.getBean("dataReader");
-		
+
 		ServletContext context = request.getServletContext();
 		int count = attribStorage.getPresentNum(context);
-		
+
 		String xmlData = getData(request, dReader);
 		JSONArray storage = initVar(xmlData, xParser);
-		
+
 		response.getWriter().append(storage.toString());
 		context.setAttribute("count", count);
 	}
-	
+
 	private String getData(HttpServletRequest request, DataReader dReader) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
 		String xmlData = dReader.getdataReader(path);

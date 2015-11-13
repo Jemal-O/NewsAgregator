@@ -1,18 +1,15 @@
+package container;
 
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
-import javax.servlet.annotation.WebListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-@WebListener
 public class ContextAttributeListener implements ServletContextAttributeListener {
 	ServletLogger sLogger;
 
+	@Autowired
 	public ContextAttributeListener() {
-		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		sLogger = (ServletLogger) ctx.getBean("servletLogger");
+		sLogger = new ServletLogger();
 	}
 
 	public void attributeAdded(ServletContextAttributeEvent event) {

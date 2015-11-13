@@ -1,20 +1,17 @@
+package container;
 
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
-import javax.servlet.annotation.WebListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-@WebListener
 public class LifeCycleListener implements ServletRequestAttributeListener, ServletRequestListener {
 	ServletLogger sLogger;
 
+	@Autowired
 	public LifeCycleListener() {
-		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		sLogger = (ServletLogger) ctx.getBean("servletLogger");
+		sLogger = new ServletLogger();
 	}
 
 	public void requestDestroyed(ServletRequestEvent sre) {
@@ -22,7 +19,8 @@ public class LifeCycleListener implements ServletRequestAttributeListener, Servl
 	}
 
 	public void attributeRemoved(ServletRequestAttributeEvent srae) {
-		sLogger.traceConsole("The attribute name: " + srae.getName() + " is removed from request" + srae.getServletRequest());
+		sLogger.traceConsole(
+				"The attribute name: " + srae.getName() + " is removed from request" + srae.getServletRequest());
 	}
 
 	public void requestInitialized(ServletRequestEvent sre) {
@@ -32,11 +30,13 @@ public class LifeCycleListener implements ServletRequestAttributeListener, Servl
 	}
 
 	public void attributeAdded(ServletRequestAttributeEvent srae) {
-		sLogger.traceConsole("The attribute name: " + srae.getName() + " is added to request" + srae.getServletRequest());
+		sLogger.traceConsole(
+				"The attribute name: " + srae.getName() + " is added to request" + srae.getServletRequest());
 	}
 
 	public void attributeReplaced(ServletRequestAttributeEvent srae) {
-		sLogger.traceConsole("The attribute name: " + srae.getName() + " is modified in request" + srae.getServletRequest());
+		sLogger.traceConsole(
+				"The attribute name: " + srae.getName() + " is modified in request" + srae.getServletRequest());
 	}
 
 }
