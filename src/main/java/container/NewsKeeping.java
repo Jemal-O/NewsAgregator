@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NewsKeeping {
-	
 	private List<NewsObject> newsObj = new ArrayList<NewsObject>();
-
 	private XMLParser xmlParser;
 
 	public List<NewsObject> getListforKeeping() {
@@ -35,7 +33,6 @@ public class NewsKeeping {
 			newsObj.setDescription(ja.getJSONObject(i).get("description").toString());
 			newsObj.setTitle(ja.getJSONObject(i).get("title").toString());
 			newsObj.setPubDate(ja.getJSONObject(i).get("pubDate").toString());
-
 			news.getListforKeeping().add(newsObj);
 		}
 		return news;

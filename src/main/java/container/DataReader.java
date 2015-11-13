@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataReader {
 
-	public String getdataReader(String path) throws IOException {
+	public String getDataReader(String path) throws IOException {
 		File xmlFile = new File(path);
 		String xmlData = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(xmlFile)));

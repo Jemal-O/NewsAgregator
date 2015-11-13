@@ -50,7 +50,7 @@ public class NewsSelector {
 
 	private String getXMLData(HttpServletRequest request) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-		String xmlData = dataReader.getdataReader(path);
+		String xmlData = dataReader.getDataReader(path);
 		return xmlData;
 	}
 

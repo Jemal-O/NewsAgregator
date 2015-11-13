@@ -11,17 +11,15 @@
 	<h3>${nothing}</h3>
 	<h3>
 		<c:forEach var="item" items="${newsStorage}">
-			<img src=${path } width="20px" height="20px">
+			<img src=${path } width="20px" height="20px"/>
 			<c:out value="Folder path : " />
 			<c:out value="${item}" />
-			<br>
+			<br/>
 		</c:forEach>
 	</h3>
-	<br>
+	<br/>
 	<FORM action="/News/addition">
-		<input type="text" name="folder" /> <input type="submit"
-			value="Add path" />
+		<input type="text" name="folder" /> <input type="submit" value="Add path" />
 	</FORM>
-
 </body>
 </html>

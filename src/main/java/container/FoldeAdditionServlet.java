@@ -14,20 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FoldeAdditionServlet {
-
 	private ArrayList<String> storage = new ArrayList<String>();
 
 	@RequestMapping(value = "/addition")
 	public String addAndViewFolders(@RequestParam(value = "folder", required = false) String folder,
 			HttpServletRequest request, HttpServletResponse response, Model model)
 					throws ServletException, IOException {
-
-		if ((folder == null) || (folder.equals(""))) {
+		if ((folder == null) || ("".equals(folder))) {
 			model.addAttribute("name", "Please enter the path");
 		} else {
 			storage.add(folder);
 		}
-
 		if (storage.isEmpty()) {
 			model.addAttribute("nothing", "Nothing is added");
 		} else {
@@ -35,9 +32,6 @@ public class FoldeAdditionServlet {
 			model.addAttribute("path", path);
 			model.addAttribute("newsStorage", storage);
 		}
-
 		return "folderAddition";
-
 	}
-
 }
