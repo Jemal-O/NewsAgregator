@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ContServlet {
+public class FoldeAdditionServlet {
 
 	private ArrayList<String> storage = new ArrayList<String>();
 
@@ -31,16 +31,9 @@ public class ContServlet {
 		if (storage.isEmpty()) {
 			model.addAttribute("nothing", "Nothing is added");
 		} else {
-			StringBuilder builder = new StringBuilder();
-			String path = request.getSession().getServletContext().getRealPath("/") + "images\\folder.jpg";
-
-			for (int i = 0; i < storage.size(); i++) {
-				builder.append("<img src=" + path + " width='20px' height='20px'/> <b>Folder path : </b>");
-				builder.append(storage.get(i));
-				builder.append("<br>");
-			}
-
-			model.addAttribute("storage", builder);
+			String path = request.getServletContext().getRealPath("/") + "images\\folder.jpg";
+			model.addAttribute("path", path);
+			model.addAttribute("newsStorage", storage);
 		}
 
 		return "folderAddition";

@@ -7,7 +7,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class ModelSubstitution extends HandlerInterceptorAdapter {
 
-
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) {
@@ -15,9 +14,7 @@ public class ModelSubstitution extends HandlerInterceptorAdapter {
 		String fieldDesc = request.getParameter("fieldDesc");
 
 		if (fieldDesc.equals("") || fieldDesc == null) {
-
 			modelAndView.getModelMap().addAttribute("news", news);
-
 		} else {
 			filterFields(modelAndView, news, fieldDesc);
 		}
@@ -26,12 +23,11 @@ public class ModelSubstitution extends HandlerInterceptorAdapter {
 	private void filterFields(ModelAndView modelAndView, NewsKeeping news, String fieldDesc) {
 		NewsKeeping filter = new NewsKeeping();
 		for (int i = 0; i < news.getListforKeeping().size(); i++) {
-
-			if (news.getListforKeeping().get(i).getAuthor().equals(fieldDesc)) {
+			String author =news.getListforKeeping().get(i).getAuthor();
+			if (author.equals(fieldDesc)) {
 				filter.getListforKeeping().add(news.getListforKeeping().get(i));
 			}
 		}
-		
 		modelAndView.getModelMap().addAttribute("news", filter);
 	}
 }

@@ -14,6 +14,7 @@ public class NewsSelector {
 	private HttpServletRequest request;
 	private NewsKeeping newsKeeping;
 	private XMLParser xmlParser;
+	private DataReader dataReader;
 
 	public NewsKeeping getNewsStorage() throws IOException {
 		String xmlData = getXMLData(request);
@@ -42,9 +43,14 @@ public class NewsSelector {
 		this.xmlParser = xmlParser;
 	}
 
+	@Autowired
+	public void setDataReader(DataReader dataReader) {
+		this.dataReader = dataReader;
+	}
+
 	private String getXMLData(HttpServletRequest request) throws IOException {
 		String path = request.getSession().getServletContext().getRealPath("/") + "JSON\\json.txt";
-		String xmlData = DataReader.getdataReader(path);
+		String xmlData = dataReader.getdataReader(path);
 		return xmlData;
 	}
 
