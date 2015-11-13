@@ -25,6 +25,11 @@
 			<version>20150729</version>
 		</dependency>
 		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.2.2.RELEASE</version>
@@ -51,11 +56,10 @@
 			<version>2.4.1</version>
 		</dependency>
 		<dependency>
-			<groupId>aspectj</groupId>
+			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.4</version>
+			<version>1.8.7</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>News</finalName>
