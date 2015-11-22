@@ -12,8 +12,7 @@ public class ModelSubstitution extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) {
 		NewsKeeping news = (NewsKeeping) modelAndView.getModel().get("news");
 		String fieldDesc = request.getParameter("fieldDesc");
-
-		if (fieldDesc.equals("") || fieldDesc == null) {
+		if (fieldDesc.isEmpty()) {
 			modelAndView.getModelMap().addAttribute("news", news);
 		} else {
 			filterFields(modelAndView, news, fieldDesc);

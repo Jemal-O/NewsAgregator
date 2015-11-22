@@ -7,19 +7,24 @@
 </head>
 <body>
 	<h3>Previously added folders:</h3>
-	<h1>${name}</h1>
-	<h3>${nothing}</h3>
 	<h3>
 		<c:forEach var="item" items="${newsStorage}">
-			<img src=${path } width="20px" height="20px"/>
+			<img src=${path } width="20px" height="20px" />
 			<c:out value="Folder path : " />
 			<c:out value="${item}" />
-			<br/>
+			<br />
 		</c:forEach>
 	</h3>
-	<br/>
+	<c:if test="${empty newsStorage}">
+		<h3>Nothing is added!</h3>
+	</c:if>
+	<c:if test="${not empty didNotEnter}">
+		<h1>${didNotEnter}</h1>
+	</c:if>
+	<br />
 	<FORM action="/News/addition">
-		<input type="text" name="folder" /> <input type="submit" value="Add path" />
+		<input type="text" name="folder" /> <input type="submit"
+			value="Add path" />
 	</FORM>
 </body>
 </html>
